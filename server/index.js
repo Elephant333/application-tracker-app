@@ -29,7 +29,7 @@ app.post("/applications", async (req, res) => {
 app.get("/applications", async (req, res) => {
   try {
     const allApps = await pool.query(
-      "SELECT * FROM applications ORDER BY app_id"
+      "SELECT * FROM applications ORDER BY app_id DESC"
     );
     res.json(allApps.rows);
   } catch (err) {
