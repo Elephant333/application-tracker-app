@@ -13,7 +13,8 @@ const InputApp = () => {
         body: JSON.stringify(body),
       });
 
-      console.log(response);
+      // this refreshes window to show change
+      window.location = "/";
     } catch (err) {
       console.error(err.message);
     }
