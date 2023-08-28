@@ -13,6 +13,20 @@ const ListApps = () => {
     }
   };
 
+  const deleteApp = async (id) => {
+    try {
+      const deleteApp = await fetch(
+        `http://localhost:5000/applications/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      setApps(apps.filter((app) => app.app_id !== id));
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   useEffect(() => {
     getApps();
   }, []);
@@ -34,11 +48,16 @@ const ListApps = () => {
             <td>john@example.com</td>
           </tr> */}
           {apps.map((app) => (
-            <tr>
+            <tr key={app.app_id}>
               <td>{app.company}</td>
               <td>Edit</td>
               <td>
-                <button className="btn btn-danger">Delete</button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deleteApp(app.app_id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
