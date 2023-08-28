@@ -1,9 +1,16 @@
 import React, { Fragment } from "react";
-import './App.css';
+import "./App.css";
+
+//components
+import InputApp from "./components/inputApp";
 
 function App() {
   return (
-    <Fragment></Fragment>
+    <Fragment>
+      <div className="container">
+        <InputApp />
+      </div>
+    </Fragment>
   );
 }
 

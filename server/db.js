@@ -6,7 +6,7 @@ const pool = new Pool({
   password: pgKey,
   host: "localhost",
   port: 5432,
-  databse: "apptracker"
-})
+  database: "apptracker",
+});
 
 module.exports = pool;
