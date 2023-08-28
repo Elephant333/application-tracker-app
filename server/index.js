@@ -28,7 +28,9 @@ app.post("/applications", async (req, res) => {
 
 app.get("/applications", async (req, res) => {
   try {
-    const allApps = await pool.query("SELECT * FROM applications");
+    const allApps = await pool.query(
+      "SELECT * FROM applications ORDER BY app_id"
+    );
     res.json(allApps.rows);
   } catch (err) {
     console.error(err.message);
@@ -57,7 +59,7 @@ app.put("/applications/:id", async (req, res) => {
     const { id } = req.params;
     const { company } = req.body;
     const updateTodo = await pool.query(
-      "UPDATE applications SET description = $1 WHERE app_id = $2",
+      "UPDATE applications SET company = $1 WHERE app_id = $2",
       [company, id]
     );
     res.json("Application was updated!");

@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import EditApp from "./EditApp";
 
 const ListApps = () => {
   const [apps, setApps] = useState([]);
@@ -42,15 +43,12 @@ const ListApps = () => {
           </tr>
         </thead>
         <tbody>
-          {/* <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-          </tr> */}
           {apps.map((app) => (
             <tr key={app.app_id}>
               <td>{app.company}</td>
-              <td>Edit</td>
+              <td>
+                <EditApp app={app} />
+              </td>
               <td>
                 <button
                   className="btn btn-danger"
